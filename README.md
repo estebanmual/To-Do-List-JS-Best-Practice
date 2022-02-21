@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://estebanmual.github.io/To-Do-List/)
+[Live Demo Link](https://estebanmual.github.io/To-Do-List-JS-Best-Practice/)
 
 👤 **Edgar Esteban Muñoz Alba**
 
