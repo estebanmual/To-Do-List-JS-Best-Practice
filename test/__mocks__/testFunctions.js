@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-export default class CRUD {
+class CRUD {
   constructor(index, completed, description) {
     this.index = index;
     this.completed = completed;
