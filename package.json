@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest --verbose --coverage",
+    "watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "file-loader": "^6.2.0",
     "hint": "^6.1.9",
     "html-loader": "^3.1.0",
+    "jest": "^27.5.1",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -87,7 +90,6 @@
     "caniuse-lite": "^1.0.30001312",
     "canvas": "^2.9.0",
     "caseless": "^0.12.0",
-    "css-minimizer-webpack-plugin": "^3.4.1",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "chownr": "^2.0.0",
@@ -114,6 +116,7 @@
     "core-util-is": "^1.0.2",
     "cross-spawn": "^7.0.3",
     "crypto-random-string": "^2.0.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
     "css-select": "^4.2.1",
     "css-what": "^5.1.0",
     "cssesc": "^3.0.0",
