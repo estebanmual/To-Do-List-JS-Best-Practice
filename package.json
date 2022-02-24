@@ -473,6 +473,6 @@
     "yauzl": "^2.10.0"
   },
   "directories": {
-    "doc": "docs"
+    "test": "test"
   }
 }
