@@ -1,3 +1,5 @@
+# To-Do-List-JS-Best-Practice
+=======
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # To Do list
@@ -15,7 +17,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://estebanmual.github.io/To-Do-List/)
+[Live Demo Link](https://estebanmual.github.io/To-Do-List-JS-Best-Practice/dist)
 
 👤 **Edgar Esteban Muñoz Alba**
 

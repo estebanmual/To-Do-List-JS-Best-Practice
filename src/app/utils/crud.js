@@ -1,5 +1,6 @@
 import getTasks from './tasks.js';
-import displayTasks from './display-task.js';
+import checkMark from '../../assets/check-mark.svg';
+import editIcon from '../../assets/editIcon.svg';
 
 function Task(index, completed, description) {
   this.index = index;
@@ -8,44 +9,54 @@ function Task(index, completed, description) {
 }
 
 export default class CRUD {
-  static addTaskToList() {
+  static add(inputAdd, e) {
     const tasks = getTasks();
     const tasksLength = tasks.length;
-    const descriptionNewTask = document.querySelector('.add-input').value;
     const indexNewTask = tasksLength;
     const completedNewTask = false;
-    const task = new Task(indexNewTask, completedNewTask, descriptionNewTask);
-    tasks.push(task);
+    const task = new Task(indexNewTask, completedNewTask, inputAdd.value);
+    if (inputAdd.value !== '') {
+      e.preventDefault();
+      tasks.push(task);
+      localStorage.clear();
+      localStorage.setItem('localTasks', JSON.stringify(tasks));
+      inputAdd.value = '';
+    }
+  }
+
+  static removeTaskOfList(f) {
+    const tasks = getTasks();
+    const tasksIndex = f.target.id;
+    f.preventDefault();
+    tasks.splice(tasksIndex, 1);
+    tasks.forEach((el, i) => {
+      el.index = i;
+    });
     localStorage.clear();
     localStorage.setItem('localTasks', JSON.stringify(tasks));
-    displayTasks();
   }
 
-  static removeTaskOfList(indexRemove) {
-    const tasks = getTasks();
-    tasks.splice(indexRemove, 1);
-    for (let i = 0; i < tasks.length; i += 1) {
-      tasks[i].index = i;
-    }
-    localStorage.setItem('localTasks', JSON.stringify(tasks));
-    displayTasks();
-  }
-
-  static updateTaskOfList(taskToEdit) {
-    taskToEdit.setAttribute('contenteditable', true);
-  }
-
-  static saveEditTask(saveId, descriptionToSave, taskToSave) {
-    const tasks = getTasks();
-    for (let i = 0; i < tasks.length; i += 1) {
-      if (saveId === tasks[i].index) {
-        tasks[i].description = descriptionToSave;
-        localStorage.clear();
-        localStorage.setItem('localTasks', JSON.stringify(tasks));
-        displayTasks();
-        taskToSave.setAttribute('contenteditable', false);
-      }
-    }
-    taskToSave.setAttribute('contenteditable', false);
+  static updateTaskOfList() {
+    const taskDescriptionEdit = document.querySelectorAll('.edit-icon');
+    taskDescriptionEdit.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        const tasks = getTasks();
+        const taskToSave = e.target.parentElement.previousElementSibling.lastChild;
+        const descriptionToSave = e.target.parentElement.previousElementSibling.textContent;
+        const saveId = Number(e.target.id);
+        tasks.forEach((el) => {
+          if (saveId === el.index) {
+            el.description = descriptionToSave;
+            localStorage.setItem('localTasks', JSON.stringify(tasks));
+          }
+        });
+        taskToSave.toggleAttribute('contenteditable');
+        if (taskToSave.hasAttribute('contenteditable')) {
+          e.target.src = checkMark;
+        } else {
+          e.target.src = editIcon;
+        }
+      });
+    });
   }
 }
