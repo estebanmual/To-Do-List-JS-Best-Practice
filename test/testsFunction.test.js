@@ -1,4 +1,4 @@
-const CRUD = require('./__mocks__/testFunctions');
+const CRUD = require('./__mocks__/testFunctions.js');
 
 const task = new CRUD();
 
