@@ -24,6 +24,15 @@ class CRUD {
     });
     return tasks;
   }
+
+  updateTaskOfList(tasks, newDescription, id) {
+    tasks.forEach((element) => {
+      if (id === element.index) {
+        element.description = newDescription;
+      }
+    });
+    return tasks;
+  }
 }
 
 module.exports = CRUD;
